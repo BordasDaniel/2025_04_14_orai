@@ -17,7 +17,7 @@ namespace _2025_04_14_orai
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static List<Hajók> hajok = new();
+        public static List<Hajok> hajok = new();
 
         public MainWindow()
         {
@@ -25,6 +25,7 @@ namespace _2025_04_14_orai
             string allomany = "adatok.txt";
             FajlBeolvasas(allomany);
             dgAdatKijelzes.ItemsSource = hajok;
+            ComboFill();
 
         }
 
@@ -48,6 +49,24 @@ namespace _2025_04_14_orai
             {
                 MessageBox.Show("Hiba történt a fájl beolvasásakor: " + ex.Message);
             }
+        }
+
+        void ComboFill()
+        {
+            HashSet<string> orszagok = hajok.Select(x => x.Orszag).ToHashSet();
+
+            cbxOrszag.Items.Add("Összes");
+            cbxOrszag.SelectedItem = "Összes";
+            foreach (string orszag in orszagok)
+            {
+                cbxOrszag.Items.Add(orszag);
+            }
+            
+        }
+
+        void Szures(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -7,6 +7,28 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid  x:Name="dgAdatKijelzes" />
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid  x:Name="dgAdatKijelzes" AutoGenerateColumns="False" Grid.Row="0">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Osztály" Binding="{Binding Osztaly}" Width="*"/>
+                <DataGridTextColumn Header="Típus" Binding="{Binding Tipus}" Width="*"/>
+                <DataGridTextColumn Header="Ország" Binding="{Binding Orszag}" Width="*"/>
+                <DataGridTextColumn Header="Ágyúk száma" Binding="{Binding AgyukSzama}" Width="*"/>
+                <DataGridTextColumn Header="Kaliber" Binding="{Binding Kaliber}" Width="*"/>
+                <DataGridTextColumn Header="Vízkiszorítás" Binding="{Binding Vizkiszoritas}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <ComboBox x:Name="cbxOrszag" Margin="5" Padding="5" FontSize="14"  />
+            <Button x:Name="btnSzures" Click="Szures" Width="60" Height="Auto" Margin="5" FontWeight="Bold" FontSize="14" Content="Szűrés"/>
+        </StackPanel>
+
     </Grid>
 </Window>
